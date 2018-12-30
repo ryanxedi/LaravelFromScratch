@@ -1,25 +1,24 @@
 @extends('layout')
 
-@section('title', 'Welcome')
+@section('title', 'About Us')
 
 @section('content')
     <div class="content">
         <div class="title m-b-md">
-            Welcome to {{$title}}
+            Projects
         </div>
-        
+
         <div>
             <ul>
-                @foreach($tasks as $task)
+                @foreach($projects as $project)
 
                     <li style="display:inline-block; padding:0 20px">
-                        {{$task}}
+                        {{$project->title}}<br>
+                        {{$project->description}}
                     </li>
                     
                 @endforeach
             </ul>
         </div>
-
     </div>
 @endsection
-
