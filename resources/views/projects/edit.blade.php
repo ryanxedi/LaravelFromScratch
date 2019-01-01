@@ -13,7 +13,7 @@
 
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
-                
+
                 <div>
                     <label for="title">Project Title</label>
                 </div>    
@@ -24,9 +24,15 @@
                     <textarea name="description" placeholder="Project desctiption" >{{ $project->description }}</textarea>
                 </div>
                 <div>
-                    <button style="width:200px; height:25px" type="submit" >Update Project</button>
+                    <button style="width:200px; height:25px" type="submit" >Update Project</button><br>
                 </div>
             </form>
+            <form method="POST" action="/projects/{{ $project->id }}">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button style="width:200px; height:25px" type="submit" >Delete Project</button>
+            </form>
+
         </div> 
     </div>
 @endsection
