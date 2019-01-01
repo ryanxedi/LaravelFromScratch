@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'About Us')
+@section('title', 'Show All Projects')
 
 @section('content')
     <div class="content">
@@ -12,13 +12,18 @@
             <ul>
                 @foreach($projects as $project)
 
-                    <li style="display:inline-block; padding:0 20px">
+                    <li style="display:inline-block; padding:20px">
+                        <a href="/projects/{{ $project->id }}/edit">
                         {{$project->title}}<br>
-                        {{$project->description}}
+                        {{$project->description}}</a>
                     </li>
                     
                 @endforeach
             </ul>
+        </div> 
+
+        <div>
+        	<h2 style="text-align:center"><a href="/projects/create">Create new project</a></h2>
         </div>
     </div>
 @endsection

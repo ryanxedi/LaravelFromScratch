@@ -12,7 +12,8 @@ class PagesController extends Controller
 			'Go to the store',
 			'Record screencast',
 			'Do my homework',
-			'Something Else'
+			'Something Else',
+            'Josh smells of poo poo'
 		])->withTitle(request('title'));
     }
 
