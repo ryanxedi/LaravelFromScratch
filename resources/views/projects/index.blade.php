@@ -13,7 +13,7 @@
                 @foreach($projects as $project)
 
                     <li style="display:inline-block; padding:20px">
-                        <a href="/projects/{{ $project->id }}/edit">
+                        <a href="/projects/{{ $project->id }}">
                         {{$project->title}}<br>
                         {{$project->description}}</a>
                     </li>
