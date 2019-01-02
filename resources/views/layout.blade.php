@@ -20,6 +20,9 @@
                 margin: 0;
             }
 
+            input, textarea, button {font-size:22px; padding:5px 10px; margin:10px; font-family: 'Nunito', sans-serif; width:60%; resize: vertical;}
+            button {width:300px; height:50px; padding: 0; font-size:15px;}
+
             .full-height {
                 height: 100vh;
             }
