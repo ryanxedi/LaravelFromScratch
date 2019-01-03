@@ -13,15 +13,26 @@
 
                 {{csrf_field() }}
                 <div>
-                    <input type="text" name="title" placeholder="Project title">
+                    <input style=" {{ $errors->has('title') ? 'border:1px solid red' : '' }}" type="text" name="title" placeholder="Project title" value=" {{old('title')}}">
                 </div>    
                 <div>
-                    <textarea name="description" placeholder="Project desctiption"></textarea>
+                    <textarea style=" {{ $errors->has('description') ? 'border:1px solid red' : '' }}"name="description" placeholder="Project desctiption"> {{old('description')}}
+                    </textarea>
                 </div>
                 <div>
                     <button style="width:200px; height:25px" type="submit" >Create Project</button>
                 </div>
             </form>
         </div> 
+
+        @if ($errors->any())
+        <div style="width:100%; background:red; color:#fff; padding:15px 0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li> {{ $error }} </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     </div>
 @endsection
