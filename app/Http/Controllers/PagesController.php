@@ -13,7 +13,6 @@ class PagesController extends Controller
 			'Record screencast',
 			'Do my homework',
 			'Something Else',
-            'Josh smells of poo poo'
 		])->withTitle(request('title'));
     }
 
