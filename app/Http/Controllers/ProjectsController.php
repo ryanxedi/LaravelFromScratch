@@ -14,12 +14,14 @@ class ProjectsController extends Controller
         $this->middleware('auth');
     }
 
+
     public function index()
     {
         $projects = Project::where('owner_id', auth()->id())->get(); //select * from projects where owner_id = 4
 
     	return view('projects.index', compact ('projects'));
     }
+
 
     public function store()
     {
@@ -33,32 +35,39 @@ class ProjectsController extends Controller
         return redirect('/projects');
     }
 
+
     public function create()
     {
     	return view('projects.create');
     }
 
+
     public function show(Project $project)
     {
-        if ($project->owner_id !== auth()->id()) {
-            abort(403);
-        }
+        // Use this to only allow authorized access to this particular endpoint
+        // $this->authorize('update', $project);
+
         return view('projects.show', compact('project'));
     }
 
+
     public function update(Project $project)
     {
+
         $project->update(request(['title', 'description']));
 
         return redirect('/projects');
     }
 
+
     public function destroy(Project $project)
     {
+
         $project->delete();
 
         return redirect('/projects');
     }
+
 
     public function edit(Project $project)
     {
