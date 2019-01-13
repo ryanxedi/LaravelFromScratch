@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Mail\ProjectCreated;
 use App\Project;
 
 class ProjectsController extends Controller
@@ -17,7 +17,9 @@ class ProjectsController extends Controller
 
     public function index()
     {
-        $projects = Project::where('owner_id', auth()->id())->get(); //select * from projects where owner_id = 4
+        $projects = Project::where('owner_id', auth()->id())->get(); 
+
+        //dump($projects);
 
     	return view('projects.index', compact ('projects'));
     }
@@ -30,7 +32,13 @@ class ProjectsController extends Controller
             'description' => ['required', 'min:3', 'max:255']
         ]);
 
-        Project::create($attributes + ['owner_id' => auth()->id()]);
+        $attributes['owner_id'] = auth()->id();
+
+        $project = Project::create($attributes);
+
+        \Mail::to('ryan@xedi.com')->send(
+            new ProjectCreated($project)
+        );
 
         return redirect('/projects');
     }
@@ -45,7 +53,7 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         // Use this to only allow authorized access to this particular endpoint
-        // $this->authorize('update', $project);
+        $this->authorize('update', $project);
 
         return view('projects.show', compact('project'));
     }
