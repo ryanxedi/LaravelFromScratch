@@ -24,6 +24,9 @@
                     <button style="width:200px; height:25px" type="submit" >Update Project</button>
                 </div>
             </form>
+
+        @include ('errors')
+            
             <form method="POST" action="/projects/{{ $project->id }}">
  
                 @csrf

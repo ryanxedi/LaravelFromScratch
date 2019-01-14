@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProjectCreated;
 
 class Project extends Model
 {
@@ -11,6 +13,23 @@ class Project extends Model
     	'description',
     	'owner_id'
     ];
+
+    public static function boot()
+    {
+    	parent::boot();
+
+    	static::created(function ($project) {
+    		Mail::to($project->owner->email)->send(
+            new ProjectCreated($project)
+        );
+    		
+    	});
+    }
+
+    public function owner()
+    {
+    	return $this->belongsTo(User::class);
+    }
 
     public function tasks()
 	{
