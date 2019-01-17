@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Mail\ProjectCreated;
 use App\Project;
+use App\Events\ProjectCreated;
 
 class ProjectsController extends Controller
 {
@@ -21,23 +20,21 @@ class ProjectsController extends Controller
     }
 
 
+    public function create()
+    {
+    	return view('projects.create');
+    }
+
     public function store()
     {
         $attributes = $this->validateProject();
 
         $attributes['owner_id'] = auth()->id();
 
-        Project::create($attributes);
+        $project = Project::create($attributes);
 
         return redirect('/projects');
     }
-
-
-    public function create()
-    {
-    	return view('projects.create');
-    }
-
 
     public function show(Project $project)
     {
