@@ -25,5 +25,10 @@
         <div>
         	<h2 style="text-align:center"><a href="/projects/create">Create new project</a></h2>
         </div>
+        <div>
+            @if (session('message'))
+                <p>{{ session('message') }}</p>
+            @endif
+        </div>
     </div>
 @endsection
