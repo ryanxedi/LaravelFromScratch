@@ -1,34 +1,14 @@
 @extends('layout')
 
-@section('title', 'Show All Projects')
-
 @section('content')
-    <div class="content">
-        <div class="title m-b-md">
-            Projects
-        </div>
 
-        <div>
-            <ul>
-                @foreach($projects as $project)
-
-                    <li style="display:inline-block; padding:20px">
-                        <a href="/projects/{{ $project->id }}">
-                        {{$project->title}}<br>
-                        {{$project->description}}</a>
-                    </li>
-                    
-                @endforeach
-            </ul>
-        </div> 
-
-        <div>
-        	<h2 style="text-align:center"><a href="/projects/create">Create new project</a></h2>
-        </div>
-        <div>
-            @if (session('message'))
-                <p>{{ session('message') }}</p>
-            @endif
-        </div>
-    </div>
+	<h1 style="margin:0 0 40px 0">All Projects</h1>
+	<ul>
+		@foreach ($projects as $project)
+		<li><a href="/projects/{{$project->id}}">{{$project->title}}</a></li>
+		@endforeach
+	</ul>
+	<form action="/projects/create">
+		<button class="btn btn-primary" style="margin:10px 0 0 0" type="submit">Create New Project</button>
+	</form>
 @endsection

@@ -2,35 +2,9 @@
 
 namespace App;
 
-// use Illuminate\Support\Facades\Mail;
-use App\Events\ProjectCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = [
-    	'title',
-    	'description',
-    	'owner_id'
-    ];
-
-    protected $dispatchesEvents = [
-    	'created' => ProjectCreated::class
-    ];
-
-    public function owner()
-    {
-    	return $this->belongsTo(User::class);
-    }
-
-    public function tasks()
-	{
-		return $this->hasMany(Task::class);
-	}
-
-	public function addTask($task)
-	{
-    	$this->tasks()->create($task);
-	}
+    protected $fillable = ['title', 'description'];
 }
-

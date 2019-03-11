@@ -1,36 +1,16 @@
 @extends('layout')
 
-@section('title', 'Create New Project')
-
 @section('content')
-    <div class="content">
-        <div class="title m-b-md">
-            Create New Project
-        </div>
 
-        <div>
-            <form method="POST" action="/projects">
-
-                {{csrf_field() }}
-                <div>
-                    <input style="{{ $errors->has('title') ? 'border:1px solid red' : '' }}" 
-                    type="text" 
-                    name="title" 
-                    placeholder="Project title" 
-                    value="{{old('title')}}">
-                </div>    
-                <div>
-                    <textarea style=" {{ $errors->has('description') ? 'border:1px solid red' : '' }}"
-                        name="description" 
-                        placeholder="Project desctiption">{{old('description')}}</textarea>
-                </div>
-                <div>
-                    <button style="width:200px; height:25px" type="submit" >Create Project</button>
-                </div>
-            </form>
-        </div> 
-
-        @include ('errors')
-        
-    </div>
+	<h1 style="margin:0 0 40px 0">Create a New Project</h1>
+	<form method="POST" action="/projects">
+		@csrf
+		<div class="form-group">
+			<input class="form-control" type="text" name="title" placeholder="Title">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" name="description" placeholder="Description"></textarea>
+		</div>
+		<button class="btn btn-primary" type="submit">Create New Project</button> <a style="font-size:0.8em; color:#666; vertical-align: bottom" href="/">Cancel</a>
+	</form>
 @endsection

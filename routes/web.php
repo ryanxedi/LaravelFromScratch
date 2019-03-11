@@ -11,16 +11,5 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
-Route::get('/contact', 'PagesController@contact');
-
-// Use this to only allow authorised users to access the entire resource.
-Route::resource('projects', 'ProjectsController');//->middleware('can:update,project');
-
-Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
-Route::patch('/tasks/{task}', 'ProjectTasksController@update');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'ProjectsController@index');
+Route::resource('projects', 'ProjectsController');

@@ -1,40 +1,25 @@
 @extends('layout')
 
-@section('title', 'Edit Project')
-
 @section('content')
-    <div class="content">
-        <div class="title m-b-md">
-            Edit Project
-        </div>
 
-        <div>
-            <form method="POST" action="/projects/{{ $project->id }}">
+	<h1 style="margin:0 0 40px 0">Edit Project</h1>
 
-                @csrf
-                @method('PATCH')
- 
-                <div>
-                    <input type="text" name="title" placeholder="Project title" value="{{ $project->title }}">
-                </div>
-                <div>
-                    <textarea name="description" placeholder="Project desctiption" >{{ $project->description }}</textarea>
-                </div>
-                <div>
-                    <button style="width:200px; height:25px" type="submit" >Update Project</button>
-                </div>
-            </form>
+	<form method="POST" action="/projects/{{ $project->id }}">
+		@csrf
+		{{ method_field('PATCH') }}
+		<div class="form-group">
+			<input class="form-control" type="text" name="title" placeholder="Title" value="{{ $project->title }}">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" name="description" placeholder="Description">{{ $project->description }}</textarea>
+		</div>
+		<button class="btn btn-primary" style="margin:10px 0 0 0" type="submit">Update Project</button>
+	</form>
 
-        @include ('errors')
-            
-            <form method="POST" action="/projects/{{ $project->id }}">
- 
-                @csrf
-                @method('DELETE')
+	<form method="POST" action="/projects/{{ $project->id }}">
+		@csrf
+		{{ method_field('DELETE') }}
+		<button class="btn btn-danger" style="margin:10px 0 0 0" type="submit">Delete Project</button>
+	</form>
 
-                <button style="width:200px; height:25px" type="submit" >Delete Project</button>
-            </form>
-
-        </div> 
-    </div>
 @endsection
