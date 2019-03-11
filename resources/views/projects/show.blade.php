@@ -11,6 +11,14 @@
 		{{$project->description}}
 	</div>
 
+	@if ($project->tasks->count())
+		<div>
+			@foreach ($project->tasks as $task)
+				<li>{{ $task->description }}</li>
+			@endforeach
+		</div>
+	@endif
+
 	<form action="/projects/{{ $project->id }}/edit/">
 		@csrf
 		<button class="btn btn-primary" style="margin:10px 0 0 0" type="submit">Edit Project</button>

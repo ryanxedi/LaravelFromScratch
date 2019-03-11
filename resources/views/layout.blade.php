@@ -25,6 +25,10 @@
 		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" 
 		crossorigin="anonymous">
 	</script>
+
+	<style>
+		.error {width:100%; border-radius: 5px; border:2px solid red; padding:5px 10px; color:#fff; margin:20px 0; background:rgba(255,0,0,0.9); box-shadow: 0px 0px 5px #666}
+	</style>
 </head>
 
 <body style="padding:40px 0">
