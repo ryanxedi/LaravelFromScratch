@@ -28,6 +28,7 @@
 
 	<style>
 		.error {width:100%; border-radius: 5px; border:2px solid red; padding:5px 10px; color:#fff; margin:20px 0; background:rgba(255,0,0,0.9); box-shadow: 0px 0px 5px #666}
+		.completed-task {text-decoration: line-through #666; color:#666;}
 	</style>
 </head>
 
