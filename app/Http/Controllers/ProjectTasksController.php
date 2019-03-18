@@ -10,11 +10,8 @@ class ProjectTasksController extends Controller
 {
     public function store(Project $project)
     {
-    	dd($project->id());
-       	Task::create([
-    		'project_id' => $project->id,
-    		'description' => request('description')
-    	]);
+        dd($project->id);
+        $project->addTask(request('description'));
 
     	return back();
     }
@@ -22,9 +19,9 @@ class ProjectTasksController extends Controller
     public function update(Task $task)
     {
 
-        $method = request()->has('completed') ? 'complete' : 'incomplete';
-
-    	$task->method();
+        $task->update([
+            'completed' => request()->has('completed')
+        ]);
 
     	return back();
     }
