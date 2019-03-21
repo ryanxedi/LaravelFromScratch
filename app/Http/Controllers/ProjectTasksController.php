@@ -10,25 +10,18 @@ class ProjectTasksController extends Controller
 {
     public function store(Project $project)
     {
-<<<<<<< HEAD
-       	Task::create([
-    		'project_id' => $project->id,
-    		'description' => request('description')
-    	]);
-=======
+        $project->addTask(
+            request()->validate(['description' => 'required'])
+        );
 
     	return back();
     }
 
     public function update(Task $task)
     {
-<<<<<<< HEAD
-=======
+        $method = request()->has('completed') ? 'complete' : 'incomplete';
 
->>>>>>> 09d3dab9a817f5206ce8c7652651304a0640e2d6
-        $task->update([
-            'completed' => request()->has('completed')
-        ]);
+        $task->$method();
 
     	return back();
     }
